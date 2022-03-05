@@ -7,9 +7,8 @@ from django.shortcuts import redirect
 
 
 def post_list(request):
-    #QuerySet (conjunto de busca) é, em essência, uma lista de objetos de um dado modelo
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    # infromação para usar no tamplate {'posts': posts}
+    # data to use in template {'posts': posts}
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
